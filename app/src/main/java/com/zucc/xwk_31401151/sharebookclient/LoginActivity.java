@@ -109,19 +109,20 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     runOnUiThread(new Runnable() {
                                       @Override
                                       public void run() {
-
-
                                           if (loginModel != null && loginModel.status == 1000 && loginModel.data != null){
 
-                                              Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                                              //将登陆信息存在SharePrefences里
+                                              SaveUserUtil.getInstance().saveUser(LoginActivity.this,loginModel.data.uid,loginModel.data.user,loginModel.data.token);
+
                                               mProgressView.setVisibility(View.GONE);
+                                              Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                                               Intent intent1 = new Intent(LoginActivity.this,MainActivity.class);
                                               startActivity(intent1);
                                               finish();
                                           }
                                           else if (loginModel != null){
+                                              mProgressView.setVisibility(View.GONE);
                                               Toast.makeText(LoginActivity.this, loginModel.desc, Toast.LENGTH_SHORT).show();
-
                                           }
                                           else{
                                               Toast.makeText(LoginActivity.this, "网络问题", Toast.LENGTH_SHORT).show();
@@ -141,11 +142,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         }
     }
 
-    private void parseJSONWithGSON(String jsonData) {
-
-
-
-    }
 }
 
 

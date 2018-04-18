@@ -10,6 +10,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
+import com.zucc.xwk_31401151.sharebookclient.util.SaveUserUtil;
+
 /**
  * Created by Administrator on 2018/4/7.
  */
@@ -60,6 +62,7 @@ public class BaseActivity extends AppCompatActivity {
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
+                    SaveUserUtil.getInstance().saveUser(BaseActivity.this,null,null,null);
                     ActivityCollector.finishAll();
                     Intent intent = new Intent(context, LoginActivity.class);
                     context.startActivity(intent);

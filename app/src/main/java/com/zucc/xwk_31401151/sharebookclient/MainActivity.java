@@ -1,5 +1,6 @@
 package com.zucc.xwk_31401151.sharebookclient;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import com.jpeng.jptabbar.OnTabSelectListener;
 import com.jpeng.jptabbar.anno.NorIcons;
 import com.jpeng.jptabbar.anno.SeleIcons;
 import com.jpeng.jptabbar.anno.Titles;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +64,9 @@ public class MainActivity extends BaseActivity implements OnTabSelectListener{
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(MainActivity.this,"123",Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(MainActivity.this,CaptureActivity.class);
+                    startActivity(intent);
+
                 }
             });
         }
