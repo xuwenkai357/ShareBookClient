@@ -29,7 +29,7 @@ import com.google.zxing.Result;
 import com.zucc.xwk_31401151.sharebookclient.R;
 import com.zucc.xwk_31401151.sharebookclient.module.zxing.ViewfinderResultPointCallback;
 import com.zucc.xwk_31401151.sharebookclient.module.zxing.camera.CameraManager;
-import com.zucc.xwk_31401151.sharebookclient.CaptureActivity;
+import com.zucc.xwk_31401151.sharebookclient.ui.activity.CaptureActivity;
 
 import java.util.Vector;
 

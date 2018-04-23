@@ -8,7 +8,7 @@ import com.zucc.xwk_31401151.sharebookclient.dataBean.UserBean;
  * Created by Administrator on 2018/4/9.
  */
 
-public class LoginModel {
+public class LoginModel extends BaseResModel {
 
 
     public int status;
@@ -17,13 +17,7 @@ public class LoginModel {
 
     public UserBean data;
 
-    public static class UserBean {
-        public String user;
 
-        public String token;
-
-        public String uid;
-    }
 
     @Override
     public String toString() {

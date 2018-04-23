@@ -26,7 +26,7 @@ import android.support.customtabs.CustomTabsIntent;
 import android.support.customtabs.CustomTabsServiceConnection;
 import android.support.customtabs.CustomTabsSession;
 
-import com.zucc.xwk_31401151.sharebookclient.WebViewActivity;
+import com.zucc.xwk_31401151.sharebookclient.ui.activity.WebViewActivity;
 
 import java.util.List;
 

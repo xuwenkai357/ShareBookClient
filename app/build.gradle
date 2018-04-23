@@ -16,6 +16,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -27,8 +31,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-
-
     compile 'com.android.support:cardview-v7:26.1.0'
     compile 'com.android.support:customtabs:26.1.0'
     //主页面VIEW
@@ -38,6 +40,10 @@ dependencies {
     compile 'com.google.code.gson:gson:2.7'
     //封装
     compile 'com.zhy:okhttputils:2.6.2'
+    //RxJava & RxAndroid
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.1.6'
+
     //Butter Knife
     implementation 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
@@ -62,4 +68,6 @@ dependencies {
     compile 'me.codeboy.android:align-text-view:2.3.0'
     testCompile 'junit:junit:4.12'
     implementation files('libs/zxing-core-3.3.0.jar')
+    //CircleImageView
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 }

@@ -22,7 +22,7 @@ import android.os.Looper;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.ResultPointCallback;
-import com.zucc.xwk_31401151.sharebookclient.CaptureActivity;
+import com.zucc.xwk_31401151.sharebookclient.ui.activity.CaptureActivity;
 
 import java.util.Hashtable;
 import java.util.Vector;

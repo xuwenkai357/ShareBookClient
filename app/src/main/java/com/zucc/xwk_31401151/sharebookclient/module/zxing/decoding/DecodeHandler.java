@@ -31,7 +31,7 @@ import com.google.zxing.common.HybridBinarizer;
 import com.zucc.xwk_31401151.sharebookclient.R;
 import com.zucc.xwk_31401151.sharebookclient.module.zxing.camera.CameraManager;
 import com.zucc.xwk_31401151.sharebookclient.module.zxing.camera.PlanarYUVLuminanceSource;
-import com.zucc.xwk_31401151.sharebookclient.CaptureActivity;
+import com.zucc.xwk_31401151.sharebookclient.ui.activity.CaptureActivity;
 
 import java.util.Hashtable;
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.zucc.xwk_31401151.sharebookclient.AddBookActivity">
+    tools:context="com.zucc.xwk_31401151.sharebookclient.ui.activity.AddBookActivity">
 
     <TextView
         android:id="@+id/isbn_key"
