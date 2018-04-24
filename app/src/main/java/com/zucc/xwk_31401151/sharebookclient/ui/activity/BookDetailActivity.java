@@ -49,8 +49,8 @@ public class BookDetailActivity extends BaseActivity implements IBookDetailView 
 
     @BindView(R.id.collapsingToolbarLayout)
     CollapsingToolbarLayout mCollapsingLayout;
-//    @BindView(R.id.fab)
-//    FloatingActionButton mFab;
+    @BindView(R.id.fab)
+    FloatingActionButton mFab;
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
     private LinearLayoutManager mLayoutManager;

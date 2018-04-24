@@ -15,7 +15,7 @@ public class AppConstant {
 //    }
 
     public static String getUrl(){
-        return "http://" + LocalUrl + "/";
+        return "http://" + SeverUrl + "/api/";
     }
 
     public static String getDoubanUrl(){

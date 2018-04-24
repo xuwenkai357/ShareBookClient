@@ -10,6 +10,7 @@ import com.zucc.xwk_31401151.sharebookclient.R;
 public class SettingActivity extends BaseActivity {
 
     private Button mButton;
+    private Button messageButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,14 @@ public class SettingActivity extends BaseActivity {
                 Intent intent = new Intent("com.example.broadcastbestpractice.FORCE_OFFLINE");
                 System.out.print("传送成功");
                 sendBroadcast(intent);
+            }
+        });
+        messageButton = findViewById(R.id.message);
+        messageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(SettingActivity.this,MessageListActivity.class);
+                startActivity(intent2);
             }
         });
     }

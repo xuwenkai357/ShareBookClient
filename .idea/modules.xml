@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ShareBookClient.iml" filepath="$PROJECT_DIR$/ShareBookClient.iml" />
+      <module fileurl="file://G:\Android_project\ShareBookClient\ShareBookClient.iml" filepath="G:\Android_project\ShareBookClient\ShareBookClient.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://G:\Android_project\ShareBookClient\app\app.iml" filepath="G:\Android_project\ShareBookClient\app\app.iml" />
     </modules>
   </component>
 </project>

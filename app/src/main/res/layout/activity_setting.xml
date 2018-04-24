@@ -6,10 +6,25 @@
     android:layout_height="match_parent"
     tools:context="com.zucc.xwk_31401151.sharebookclient.ui.activity.SettingActivity">
 
-    <Button
-        android:id="@+id/exit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="注销"
+            />
+        <Button
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="站内信"/>
+
+    </LinearLayout>
+
+
+
 </android.support.constraint.ConstraintLayout>
