@@ -121,44 +121,14 @@ public class BookDetailAdapter extends RecyclerView.Adapter {
             sb.append("定价:").append(mBookInfo.getPrice()).append("\n");
             sb.append("装帧:").append(mBookInfo.getBinding()).append("\n");
             sb.append("isbn:").append(mBookInfo.getIsbn13()).append("\n");
-//            ((BookInfoHolder) holder).tv_publish_date.setText("出版年:" + mBookInfo.getPubdate());
-//            ((BookInfoHolder) holder).tv_pages.setText("页数:" + mBookInfo.getPages());
-//            ((BookInfoHolder) holder).tv_price.setText("定价:" + mBookInfo.getPrice());
-//            ((BookInfoHolder) holder).tv_binding.setText("装帧:" + mBookInfo.getBinding());
-//            ((BookInfoHolder) holder).tv_isbn.setText("isbn:" + mBookInfo.getIsbn13());
-
-
             ((BookInfoHolder) holder).rl_more_info.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (flag) {
                         ObjectAnimator.ofFloat(((BookInfoHolder) holder).iv_more_info, "rotation", 90, 0).start();
-//                        ((BookInfoHolder) holder).progressBar.setVisibility(View.GONE);
-//                        ((BookInfoHolder) holder).ll_publish_info.setVisibility(View.GONE);
                         flag = false;
                     } else {
                         ObjectAnimator.ofFloat(((BookInfoHolder) holder).iv_more_info, "rotation", 0, 90).start();
-//                        ((BookInfoHolder) holder).progressBar.setVisibility(View.VISIBLE);
-//                        new Handler(new Handler.Callback() {
-//                            @Override
-//                            public boolean handleMessage(Message msg) {
-//                                if (flag) {
-////                                    ((BookInfoHolder) holder).ll_publish_info.setVisibility(View.VISIBLE);
-////                                    ((BookInfoHolder) holder).progressBar.setVisibility(View.GONE);
-//                                    new AlertDialog.Builder(BaseActivity.activity)
-//                                            .setTitle("详细信息：")
-//                                            .setMessage(mBookInfo.getInfoString())
-//                                            .setOnDismissListener(new DialogInterface.OnDismissListener() {
-//                                                @Override
-//                                                public void onDismiss(DialogInterface dialog) {
-//                                                    ObjectAnimator.ofFloat(((BookInfoHolder) holder).iv_more_info, "rotation", 90, 0).start();
-//                                                }
-//                                            })
-//                                            .create().show();
-//                                }
-//                                return true;
-//                            }
-//                        }).sendEmptyMessageDelayed(0, getDelayTime());
                         new AlertDialog.Builder(BaseActivity.activity)
                                 .setTitle("详细信息：")
                                 .setMessage(sb)

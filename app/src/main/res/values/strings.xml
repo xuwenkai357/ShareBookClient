@@ -71,4 +71,5 @@
     <string name="title_activity_book_dynamic">BookDynamicActivity</string>
     <string name="mysharebook">我的分享</string>
     <string name="myborrow">我的借阅</string>
+    <string name="hint_adddynamic">请输入你的想法</string>
 </resources>

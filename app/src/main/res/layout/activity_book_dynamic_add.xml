@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".ui.activity.BookDynamicAddActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <android.support.v7.widget.CardView
+                    android:id="@+id/cardview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+                    android:layout_margin="10dp"
+
+                    >
+
+                    <EditText
+                        android:id="@+id/tv_message_body"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="@string/hint_adddynamic"
+                        android:padding="10dp"
+                        android:paddingBottom="10dp"
+                        android:singleLine="false"
+                        android:textColor="#000000"
+                        android:textSize="20dp" />
+                </android.support.v7.widget.CardView>
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btn_add"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:padding="20dp"
+                android:text="添加书籍" />
+
+            <LinearLayout
+                android:id="@+id/add_book"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/btn_add"
+                android:layout_centerHorizontal="true"
+                android:padding="15dp"
+                android:background="@drawable/shape_corner"
+                android:visibility="visible"
+                >
+                <ImageView
+                android:id="@+id/iv_book_img"
+                android:layout_width="54dp"
+                android:layout_height="78dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/s29572743" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical"
+                    >
+
+                    <TextView
+                        android:id="@+id/tv_book_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:padding="5dp"
+                        android:text="第一行代码：Android（第2版）"
+                        android:textColor="?android:textColorPrimary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+
+
+                    <TextView
+                        android:id="@+id/tv_book_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:maxLines="2"
+                        android:padding="5dp"
+                        android:text="郭霖"
+                        android:textColor="?android:textColorSecondary"
+                        android:textSize="12sp" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+            </RelativeLayout>
+
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

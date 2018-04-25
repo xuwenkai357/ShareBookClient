@@ -2,6 +2,7 @@ package com.zucc.xwk_31401151.sharebookclient.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -80,6 +81,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             ((MessageHolder) holder).tv_message_create_time.setText(message.getCreate_time());
             if (message.getStatus().equals("1")) {
                 ((MessageHolder) holder).iv_point.setVisibility(View.GONE);
+                ((MessageHolder) holder).tv_message_body.setTypeface(null, Typeface.NORMAL);
             }
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
