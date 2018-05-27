@@ -116,18 +116,8 @@
                         android:text="郭霖"
                         android:textColor="?android:textColorSecondary"
                         android:textSize="12sp" />
-
-
                 </LinearLayout>
             </LinearLayout>
-
-
-
-
-
-
-
-
 
 
             </RelativeLayout>

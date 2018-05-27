@@ -15,7 +15,9 @@ import rx.Observable;
  * Description:
  */
 public interface IBookReviewsService {
-    @GET("book/{bookId}/reviews")
-    Observable<Response<BookReviewsListResponse>> getBookReviews(@Path("bookId") String bookId, @Query("start") int start, @Query("count") int count, @Query("fields") String fields);
+    @GET("/api/dynamic/search")
+    Observable<Response<BookReviewsListResponse>> getBookReviews(@Query("bookinfoid") String bookinfoid, @Query("start") int start, @Query("count") int count);
+//    @GET("book/{bookId}/reviews")
+//    Observable<Response<BookReviewsListResponse>> getBookReviews(@Path("bookId") String bookId, @Query("start") int start, @Query("count") int count, @Query("fields") String fields);
 
 }

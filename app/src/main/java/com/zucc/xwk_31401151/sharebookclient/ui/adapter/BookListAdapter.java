@@ -77,11 +77,11 @@ public class BookListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         if (holder instanceof BookListHolder) {
             final BookInfoResponse bookInfo = bookInfoResponses.get(position);
             Glide.with(mContext)
-                    .load(bookInfo.getImages().getLarge())
+                    .load(bookInfo.getImage())
                     .into(((BookListHolder) holder).iv_book_img);
             ((BookListHolder) holder).tv_book_title.setText(bookInfo.getTitle());
-            ((BookListHolder) holder).ratingBar_hots.setRating(Float.valueOf(bookInfo.getRating().getAverage()) / 2);
-            ((BookListHolder) holder).tv_hots_num.setText(bookInfo.getRating().getAverage());
+//            ((BookListHolder) holder).ratingBar_hots.setRating(Float.valueOf(bookInfo.getRating().getAverage()) / 2);
+//            ((BookListHolder) holder).tv_hots_num.setText(bookInfo.getRating().getAverage());
             ((BookListHolder) holder).tv_book_info.setText(bookInfo.getInfoString());
             ((BookListHolder) holder).tv_book_description.setText("\u3000" + bookInfo.getSummary());
             ((BookListHolder) holder).itemView.setOnClickListener(new View.OnClickListener() {

@@ -1,5 +1,7 @@
 package com.zucc.xwk_31401151.sharebookclient.api.model.impl;
 
+import android.util.Log;
+
 import com.zucc.xwk_31401151.sharebookclient.AppConstant;
 import com.zucc.xwk_31401151.sharebookclient.api.ApiCompleteListener;
 import com.zucc.xwk_31401151.sharebookclient.api.common.ServiceFactory;
@@ -27,8 +29,8 @@ public class BookDetailModelImpl implements IBookDetailModel {
 
     @Override
     public void loadReviewsList(String bookId, int start, int count, String fields, final ApiCompleteListener listener) {
-        IBookReviewsService iBookReviewsService = ServiceFactory.createService(AppConstant.getDoubanUrl(), IBookReviewsService.class);
-        iBookReviewsService.getBookReviews(bookId, start, count, fields)
+        IBookReviewsService iBookReviewsService = ServiceFactory.createService(AppConstant.getUrl(), IBookReviewsService.class);
+        iBookReviewsService.getBookReviews(bookId, start, count)
                 .subscribeOn(Schedulers.io())    //请求在io线程中执行
                 .observeOn(AndroidSchedulers.mainThread())//最后在主线程中执行
                 .subscribe(new Subscriber<Response<BookReviewsListResponse>>() {
@@ -49,6 +51,7 @@ public class BookDetailModelImpl implements IBookDetailModel {
                     @Override
                     public void onNext(Response<BookReviewsListResponse> bookReviewsResponse) {
                         if (bookReviewsResponse.isSuccessful()) {
+                            Log.i("BookReviewsListResponse",bookReviewsResponse.body().getTotal() + "");
                             listener.onComplected(bookReviewsResponse.body());
                         } else {
                             listener.onFailed(new BaseResponse(bookReviewsResponse.code(), bookReviewsResponse.message()));

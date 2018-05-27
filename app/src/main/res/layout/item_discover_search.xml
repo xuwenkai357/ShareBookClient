@@ -22,16 +22,16 @@
             android:textColor="?android:attr/textColorSecondary"
             android:textSize="14sp" />
 
-        <ImageView
-            android:id="@+id/iv_scan"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:foreground="?android:selectableItemBackground"
-            android:paddingLeft="2dp"
-            android:paddingRight="4dp"
-            android:scaleType="center"
-            android:src="@drawable/ic_scan_light" />
+        <!--<ImageView-->
+            <!--android:id="@+id/iv_scan"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:foreground="?android:selectableItemBackground"-->
+            <!--android:paddingLeft="2dp"-->
+            <!--android:paddingRight="4dp"-->
+            <!--android:scaleType="center"-->
+            <!--android:src="@drawable/ic_scan_light" />-->
     </LinearLayout>
 
 </LinearLayout>

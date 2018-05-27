@@ -1,7 +1,7 @@
 package com.zucc.xwk_31401151.sharebookclient.model;
 
 import com.google.gson.annotations.SerializedName;
-import com.zucc.xwk_31401151.sharebookclient.dataBean.UserBean;
+import com.zucc.xwk_31401151.sharebookclient.bean.UserBean;
 
 
 /**

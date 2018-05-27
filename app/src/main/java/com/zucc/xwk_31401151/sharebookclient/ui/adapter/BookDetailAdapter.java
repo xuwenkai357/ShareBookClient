@@ -9,6 +9,7 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.AppCompatRatingBar;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,10 +31,13 @@ import com.zucc.xwk_31401151.sharebookclient.bean.http.douban.BookSeriesListResp
 //import com.zucc.xwk_31401151.sharebookclient.holder.BookSeriesCeilHolder;
 import com.zucc.xwk_31401151.sharebookclient.ui.activity.BaseActivity;
 import com.zucc.xwk_31401151.sharebookclient.ui.activity.BookDynamicActivity;
+import com.zucc.xwk_31401151.sharebookclient.ui.activity.BookReviewsActivity;
 import com.zucc.xwk_31401151.sharebookclient.utils.common.UIUtils;
 
 import java.util.List;
 import java.util.Random;
+
+import static com.zucc.xwk_31401151.sharebookclient.utils.common.UIUtils.startActivity;
 
 /**
  * Author   :hymanme
@@ -88,42 +92,44 @@ public class BookDetailAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof BookInfoHolder) {
-            ((BookInfoHolder) holder).ratingBar_hots.setRating(Float.valueOf(mBookInfo.getRating().getAverage()) / 2);
-            ((BookInfoHolder) holder).tv_hots_num.setText(mBookInfo.getRating().getAverage());
-            ((BookInfoHolder) holder).tv_comment_num.setText(mBookInfo.getRating().getNumRaters() + UIUtils.getContext().getString(R.string.comment_num));
+            Log.i("enter", "BookInfoHolder");
+//            ((BookInfoHolder) holder).ratingBar_hots.setRating(Float.valueOf(mBookInfo.getRating().getAverage()) / 2);
+//            ((BookInfoHolder) holder).tv_hots_num.setText(mBookInfo.getRating().getAverage());
+//            ((BookInfoHolder) holder).tv_comment_num.setText(mBookInfo.getRating().getNumRaters() + UIUtils.getContext().getString(R.string.comment_num));
             ((BookInfoHolder) holder).tv_book_info.setText(mBookInfo.getInfoString());
             //详细信息
             StringBuilder sb = new StringBuilder();
-            if (mBookInfo.getAuthor().length > 0) {
+            if (mBookInfo.getAuthor() != null) {
 //                ((BookInfoHolder) holder).tv_author.setText("作者:" + mBookInfo.getAuthor()[0]);
-                sb.append("作者:").append(mBookInfo.getAuthor()[0]).append("\n");
+                sb.append("作者:").append(mBookInfo.getAuthor()).append("\n");
             }
 //            ((BookInfoHolder) holder).tv_publisher.setText("出版社:" + mBookInfo.getPublisher());
             sb.append("出版社:").append(mBookInfo.getPublisher()).append("\n");
-            if (mBookInfo.getSubtitle().isEmpty()) {
+//            if (mBookInfo.getSubtitle().isEmpty()) {
                 ((BookInfoHolder) holder).tv_subtitle.setVisibility(View.GONE);
-            }
+//            }
 //            ((BookInfoHolder) holder).tv_subtitle.setText("副标题:" + mBookInfo.getSubtitle());
-            sb.append("副标题:").append(mBookInfo.getSubtitle()).append("\n");
-            if (mBookInfo.getOrigin_title().isEmpty()) {
+//            sb.append("副标题:").append(mBookInfo.getSubtitle()).append("\n");
+//            if (mBookInfo.getOrigin_title().isEmpty()) {
                 ((BookInfoHolder) holder).tv_origin_title.setVisibility(View.GONE);
-            }
+//            }
 //            ((BookInfoHolder) holder).tv_origin_title.setText("原作名:" + mBookInfo.getOrigin_title());
-            sb.append("原作名:").append(mBookInfo.getOrigin_title()).append("\n");
-            if (mBookInfo.getTranslator().length > 0) {
+//            sb.append("原作名:").append(mBookInfo.getOrigin_title()).append("\n");
+//            if (mBookInfo.getTranslator().length > 0) {
 //                ((BookInfoHolder) holder).tv_translator.setText("译者:" + mBookInfo.getTranslator()[0]);
-                sb.append("译者:").append(mBookInfo.getTranslator()[0]).append("\n");
-            } else {
+//                sb.append("译者:").append(mBookInfo.getTranslator()[0]).append("\n");
+//            } else {
                 ((BookInfoHolder) holder).tv_translator.setVisibility(View.GONE);
-            }
+//            }
             sb.append("出版年:").append(mBookInfo.getPubdate()).append("\n");
             sb.append("页数:").append(mBookInfo.getPages()).append("\n");
             sb.append("定价:").append(mBookInfo.getPrice()).append("\n");
-            sb.append("装帧:").append(mBookInfo.getBinding()).append("\n");
+//            sb.append("装帧:").append(mBookInfo.getBinding()).append("\n");
             sb.append("isbn:").append(mBookInfo.getIsbn13()).append("\n");
             ((BookInfoHolder) holder).rl_more_info.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Log.i("enter", "rl_more_info");
                     if (flag) {
                         ObjectAnimator.ofFloat(((BookInfoHolder) holder).iv_more_info, "rotation", 90, 0).start();
                         flag = false;
@@ -145,50 +151,59 @@ public class BookDetailAdapter extends RecyclerView.Adapter {
                 }
             });
         } else if (holder instanceof BookBriefHolder) {
+
+            Log.i("enter", "BookBriefHolder");
             if (!mBookInfo.getSummary().isEmpty()) {
                 ((BookBriefHolder) holder).etv_brief.setContent(mBookInfo.getSummary());
             } else {
                 ((BookBriefHolder) holder).etv_brief.setContent(UIUtils.getContext().getString(R.string.no_brief));
             }
         } else if (holder instanceof BookCommentHolder) {
+
             List<BookReviewResponse> reviews = mReviewsListResponse.getReviews();
+            Log.i("enter", "BookCommentHolder");
+            System.out.printf(reviews.size()+"");
+
             if (reviews.isEmpty()) {
+                Log.d("enter", "onBindViewHolder:2 ");
                 ((BookCommentHolder) holder).itemView.setVisibility(View.GONE);
             } else if (position == HEADER_COUNT) {
                 ((BookCommentHolder) holder).tv_comment_title.setVisibility(View.VISIBLE);
+                Log.d("enter", "onBindViewHolder: 3");
             } else if (position == reviews.size() + 1) {
                 ((BookCommentHolder) holder).tv_more_comment.setVisibility(View.VISIBLE);
                 ((BookCommentHolder) holder).tv_more_comment.setText(UIUtils.getContext().getString(R.string.more_brief) + mReviewsListResponse.getTotal() + "条");
                 ((BookCommentHolder) holder).tv_more_comment.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(UIUtils.getContext(), BookDynamicActivity.class);
-                        intent.putExtra("bookId", mBookInfo.getId());
+                        Intent intent = new Intent(UIUtils.getContext(), BookReviewsActivity.class);
+                        intent.putExtra("bookId", mBookInfo.getBook_info_id());
                         intent.putExtra("bookName", mBookInfo.getTitle());
-                        UIUtils.startActivity(intent);
+                        startActivity(intent);
                     }
                 });
             }
-            Glide.with(UIUtils.getContext())
-                    .load(reviews.get(position - HEADER_COUNT).getAuthor().getAvatar())
-                    .asBitmap()
-                    .centerCrop()
-                    .into(new BitmapImageViewTarget(((BookCommentHolder) holder).iv_avatar) {
-                        @Override
-                        protected void setResource(Bitmap resource) {
-                            RoundedBitmapDrawable circularBitmapDrawable =
-                                    RoundedBitmapDrawableFactory.create(UIUtils.getContext().getResources(), resource);
-                            circularBitmapDrawable.setCircular(true);
-                            ((BookCommentHolder) holder).iv_avatar.setImageDrawable(circularBitmapDrawable);
-                        }
-                    });
-            ((BookCommentHolder) holder).tv_user_name.setText(reviews.get(position - HEADER_COUNT).getAuthor().getName());
-            if (reviews.get(position - HEADER_COUNT).getRating() != null) {
-                ((BookCommentHolder) holder).ratingBar_hots.setRating(Float.valueOf(reviews.get(position - HEADER_COUNT).getRating().getValue()));
-            }
-            ((BookCommentHolder) holder).tv_comment_content.setText(reviews.get(position - HEADER_COUNT).getSummary());
-            ((BookCommentHolder) holder).tv_favorite_num.setText(reviews.get(position - HEADER_COUNT).getVotes() + "");
-            ((BookCommentHolder) holder).tv_update_time.setText(reviews.get(position - HEADER_COUNT).getUpdated().split(" ")[0]);
+//            Glide.with(UIUtils.getContext())
+//                    .load(reviews.get(position - HEADER_COUNT).getPhoto_url())
+//                    .asBitmap()
+//                    .centerCrop()
+//                    .into(new BitmapImageViewTarget(((BookCommentHolder) holder).iv_avatar) {
+//                        @Override
+//                        protected void setResource(Bitmap resource) {
+//                            RoundedBitmapDrawable circularBitmapDrawable =
+//                                    RoundedBitmapDrawableFactory.create(UIUtils.getContext().getResources(), resource);
+//                            circularBitmapDrawable.setCircular(true);
+//                            ((BookCommentHolder) holder).iv_avatar.setImageDrawable(circularBitmapDrawable);
+//                        }
+//                    });
+            ((BookCommentHolder) holder).iv_avatar.setImageResource(R.mipmap.photo);
+            ((BookCommentHolder) holder).tv_user_name.setText(reviews.get(position - HEADER_COUNT).getUser_name());
+//            if (reviews.get(position - HEADER_COUNT).getRating() != null) {
+//                ((BookCommentHolder) holder).ratingBar_hots.setRating(Float.valueOf(reviews.get(position - HEADER_COUNT).getRating().getValue()));
+//            }
+            ((BookCommentHolder) holder).tv_comment_content.setText(reviews.get(position - HEADER_COUNT).getBody());
+//            ((BookCommentHolder) holder).tv_favorite_num.setText(reviews.get(position - HEADER_COUNT).getVotes() + "");
+            ((BookCommentHolder) holder).tv_update_time.setText(reviews.get(position - HEADER_COUNT).getCreate_time().split(" ")[0]);
         }
 //        else if (holder instanceof BookSeriesHolder) {
 //            final List<BookInfoResponse> seriesBooks = mSeriesListResponse.getBooks();
@@ -256,7 +271,7 @@ public class BookDetailAdapter extends RecyclerView.Adapter {
             super(itemView);
             ratingBar_hots = (AppCompatRatingBar) itemView.findViewById(R.id.ratingBar_hots);
             tv_hots_num = (TextView) itemView.findViewById(R.id.tv_hots_num);
-            tv_comment_num = (TextView) itemView.findViewById(R.id.tv_comment_num);
+
             tv_book_info = (TextView) itemView.findViewById(R.id.tv_book_info);
             iv_more_info = (ImageView) itemView.findViewById(R.id.iv_more_info);
             progressBar = (ProgressBar) itemView.findViewById(R.id.progressBar);

@@ -9,5 +9,6 @@ package com.zucc.xwk_31401151.sharebookclient.api.presenter;
 public interface IBookListPresenter {
     void loadBooks(String q, String tag, int start, int count, String fields);
 
+
     void cancelLoading();
 }

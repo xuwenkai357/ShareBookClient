@@ -14,6 +14,6 @@ import rx.Observable;
  * Description:
  */
 public interface IBookListService {
-    @GET("book/search")
-    Observable<Response<BookListResponse>> getBookList(@Query("q") String q, @Query("tag") String tag, @Query("start") int start, @Query("count") int count, @Query("fields") String fields);
+    @GET("/api/bookinfo/searchlocal")
+    Observable<Response<BookListResponse>> getBookList(@Query("keyword") String keyword, @Query("start") int start, @Query("count") int count);
 }

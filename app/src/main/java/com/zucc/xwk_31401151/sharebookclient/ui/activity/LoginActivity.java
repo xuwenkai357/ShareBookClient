@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -19,10 +18,8 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.zucc.xwk_31401151.sharebookclient.AppConstant;
 import com.zucc.xwk_31401151.sharebookclient.R;
-import com.zucc.xwk_31401151.sharebookclient.util.*;
+import com.zucc.xwk_31401151.sharebookclient.utils.common.*;
 import com.zucc.xwk_31401151.sharebookclient.model.*;
-
-import org.w3c.dom.Text;
 
 import okhttp3.Call;
 import okhttp3.Response;
@@ -118,15 +115,25 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                     java.lang.reflect.Type type = new TypeToken<LoginModel>() {}.getType();
                     final LoginModel loginModel = gson.fromJson(responseData,type);
                     if (loginModel!=null) {
-                        System.out.printf(loginModel.desc + loginModel.status);
+                        System.out.println(loginModel.desc + loginModel.status);
                     }
                     runOnUiThread(new Runnable() {
                                       @Override
                                       public void run() {
                                           if (loginModel != null && loginModel.status == 1000 && loginModel.data != null){
 
+                                              String userid = loginModel.data.user_id;
+                                              String user = loginModel.data.user;
+                                              String token = loginModel.data.token;
+                                              String user_name = loginModel.data.user_name;
+                                              String phone = loginModel.data.phone;
+
+                                              System.out.println(userid+user+token);
+
                                               //将登陆信息存在SharePrefences里
-                                              SaveUserUtil.getInstance().saveUser(LoginActivity.this,loginModel.data.uid,loginModel.data.user,loginModel.data.token);
+                                              SaveUserUtil.getInstance().saveUser(LoginActivity.this,userid,user,token,user_name,phone);
+
+
 
                                               mProgressView.setVisibility(View.GONE);
                                               Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
@@ -138,9 +145,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                                               mProgressView.setVisibility(View.GONE);
                                               Toast.makeText(LoginActivity.this, loginModel.desc, Toast.LENGTH_SHORT).show();
                                               mLoginFormView.setVisibility(View.VISIBLE);
-                                          }
+                                      }
                                           else{
+                                              mProgressView.setVisibility(View.GONE);
                                               Toast.makeText(LoginActivity.this, "网络问题", Toast.LENGTH_SHORT).show();
+                                              mLoginFormView.setVisibility(View.VISIBLE);
                                           }
 
 

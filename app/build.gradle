@@ -70,4 +70,8 @@ dependencies {
     implementation files('libs/zxing-core-3.3.0.jar')
     //CircleImageView
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    //
+    implementation 'com.afollestad.material-dialogs:core:0.9.1.0'
+    implementation 'com.afollestad.material-dialogs:commons:0.9.1.0'
 }

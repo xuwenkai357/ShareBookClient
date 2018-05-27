@@ -61,26 +61,27 @@ public class BookReviewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof BookCommentHolder) {
             List<BookReviewResponse> reviews = reviewsListResponse.getReviews();
-            Glide.with(UIUtils.getContext())
-                    .load(reviews.get(position).getAuthor().getAvatar())
-                    .asBitmap()
-                    .centerCrop()
-                    .into(new BitmapImageViewTarget(((BookCommentHolder) holder).iv_avatar) {
-                        @Override
-                        protected void setResource(Bitmap resource) {
-                            RoundedBitmapDrawable circularBitmapDrawable =
-                                    RoundedBitmapDrawableFactory.create(UIUtils.getContext().getResources(), resource);
-                            circularBitmapDrawable.setCircular(true);
-                            ((BookCommentHolder) holder).iv_avatar.setImageDrawable(circularBitmapDrawable);
-                        }
-                    });
-            ((BookCommentHolder) holder).tv_user_name.setText(reviews.get(position).getAuthor().getName());
-            if (reviews.get(position).getRating() != null) {
-                ((BookCommentHolder) holder).ratingBar_hots.setRating(Float.valueOf(reviews.get(position).getRating().getValue()));
-            }
-            ((BookCommentHolder) holder).tv_comment_content.setText(reviews.get(position).getSummary());
-            ((BookCommentHolder) holder).tv_favorite_num.setText(reviews.get(position).getVotes() + "");
-            ((BookCommentHolder) holder).tv_update_time.setText(reviews.get(position).getUpdated().split(" ")[0]);
+//            Glide.with(UIUtils.getContext())
+//                    .load(reviews.get(position).getAuthor().getAvatar())
+//                    .asBitmap()
+//                    .centerCrop()
+//                    .into(new BitmapImageViewTarget(((BookCommentHolder) holder).iv_avatar) {
+//                        @Override
+//                        protected void setResource(Bitmap resource) {
+//                            RoundedBitmapDrawable circularBitmapDrawable =
+//                                    RoundedBitmapDrawableFactory.create(UIUtils.getContext().getResources(), resource);
+//                            circularBitmapDrawable.setCircular(true);
+//                            ((BookCommentHolder) holder).iv_avatar.setImageDrawable(circularBitmapDrawable);
+//                        }
+//                    });
+            ((BookCommentHolder) holder).iv_avatar.setImageResource(R.mipmap.photo);
+            ((BookCommentHolder) holder).tv_user_name.setText(reviews.get(position).getUser_name());
+//            if (reviews.get(position).getRating() != null) {
+//                ((BookCommentHolder) holder).ratingBar_hots.setRating(Float.valueOf(reviews.get(position).getRating().getValue()));
+//            }
+            ((BookCommentHolder) holder).tv_comment_content.setText(reviews.get(position).getBody());
+//            ((BookCommentHolder) holder).tv_favorite_num.setText(reviews.get(position).getVotes() + "");
+            ((BookCommentHolder) holder).tv_update_time.setText(reviews.get(position).getCreate_time().split(" ")[0]);
         }
     }
 

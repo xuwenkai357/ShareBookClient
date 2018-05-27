@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.support.v7.app.AppCompatDelegate;
 
+import com.zucc.xwk_31401151.sharebookclient.ui.activity.Base2Activity;
 import com.zucc.xwk_31401151.sharebookclient.ui.activity.BaseActivity;
 
 import java.util.LinkedList;
@@ -22,7 +23,7 @@ public class BaseApplication extends Application {
     /**
      * Activity集合，来管理所有的Activity
      */
-    private static List<BaseActivity> activities;
+    private static List<Base2Activity> activities;
 
     static {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
@@ -59,7 +60,7 @@ public class BaseApplication extends Application {
      *
      * @param activity
      */
-    public void addActivity(BaseActivity activity) {
+    public void addActivity(Base2Activity activity) {
         activities.add(activity);
     }
 
@@ -68,7 +69,7 @@ public class BaseApplication extends Application {
      *
      * @param activity
      */
-    public void removeActivity(BaseActivity activity) {
+    public void removeActivity(Base2Activity activity) {
         activities.remove(activity);
     }
 
@@ -76,8 +77,8 @@ public class BaseApplication extends Application {
      * 结束当前所有Activity
      */
     public static void clearActivities() {
-        ListIterator<BaseActivity> iterator = activities.listIterator();
-        BaseActivity activity;
+        ListIterator<Base2Activity> iterator = activities.listIterator();
+        Base2Activity activity;
         while (iterator.hasNext()) {
             activity = iterator.next();
             if (activity != null) {

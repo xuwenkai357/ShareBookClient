@@ -2,6 +2,7 @@ package com.zucc.xwk_31401151.sharebookclient.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
@@ -11,6 +12,8 @@ public class SettingActivity extends BaseActivity {
 
     private Button mButton;
     private Button messageButton;
+    private Button modifyButton;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +23,20 @@ public class SettingActivity extends BaseActivity {
     }
 
     public void initUI(){
+
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_left_dark);
+        toolbar.setTitle("个人信息");
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         mButton = findViewById(R.id.exit);
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +52,15 @@ public class SettingActivity extends BaseActivity {
             public void onClick(View view) {
                 Intent intent2 = new Intent(SettingActivity.this,MessageListActivity.class);
                 startActivity(intent2);
+            }
+        });
+
+        modifyButton = findViewById(R.id.modify);
+        modifyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent3 = new Intent(SettingActivity.this,ModifyActivity.class);
+                startActivity(intent3);
             }
         });
     }

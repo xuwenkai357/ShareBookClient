@@ -48,7 +48,15 @@
         <activity android:name=".ui.activity.SearchResultActivity" />
         <activity android:name=".ui.activity.MessageDetailActivity" />
         <activity android:name=".ui.activity.MessageListActivity" />
-        <activity android:name=".ui.activity.BookDynamicAddActivity"></activity>
+        <activity android:name=".ui.activity.BookDynamicAddActivity" />
+        <activity android:name=".ui.activity.MyBorrowListActivity" />
+        <activity android:name=".ui.activity.MyShareListActivity" />
+        <activity android:name=".ui.activity.AddBookDetailActivity" />
+        <activity android:name=".ui.activity.BorrowListActivity" />
+        <activity android:name=".ui.activity.SelectBookActivity" />
+        <activity android:name=".ui.activity.ModifyActivity"/>
+        <activity android:name=".ui.activity.BookReviewsActivity">
+        </activity>
     </application>
 
 </manifest>

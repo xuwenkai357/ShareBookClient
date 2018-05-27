@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zucc.xwk_31401151.sharebookclient.R;
-import com.zucc.xwk_31401151.sharebookclient.dataBean.response.MessageResponse;
+import com.zucc.xwk_31401151.sharebookclient.bean.MessageResponse;
 import com.zucc.xwk_31401151.sharebookclient.ui.activity.MessageDetailActivity;
 import com.zucc.xwk_31401151.sharebookclient.utils.common.UIUtils;
 
@@ -75,11 +76,13 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof MessageHolder){
+            Log.i("enter", "MessageHolder");
+
             MessageResponse message = messageResponses.get(position);
 
             ((MessageHolder) holder).tv_message_body.setText(message.getBody());
             ((MessageHolder) holder).tv_message_create_time.setText(message.getCreate_time());
-            if (message.getStatus().equals("1")) {
+            if (message.getStatus().equals("0")) {
                 ((MessageHolder) holder).iv_point.setVisibility(View.GONE);
                 ((MessageHolder) holder).tv_message_body.setTypeface(null, Typeface.NORMAL);
             }
@@ -125,7 +128,6 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             tv_message_body = (TextView) itemView.findViewById(R.id.tv_message_body);
             tv_message_create_time = (TextView) itemView.findViewById(R.id.tv_create_time);
             iv_point = (ImageView) itemView.findViewById(R.id.iv_message_point);
-
 
         }
     }

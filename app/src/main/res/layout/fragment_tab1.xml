@@ -25,6 +25,7 @@
             />
 
         <TextView
+            android:id="@+id/tv_user_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
@@ -41,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-
+            android:id="@+id/cd_myshare"
             >
             <TextView
                 android:gravity="center_horizontal"
@@ -59,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-
+            android:id="@+id/cd_myborrow"
             >
             <TextView
                 android:layout_width="match_parent"

@@ -1,15 +1,21 @@
 package com.zucc.xwk_31401151.sharebookclient.ui.activity;
 
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
 
 import com.zucc.xwk_31401151.sharebookclient.R;
-import com.zucc.xwk_31401151.sharebookclient.dataBean.response.MessageResponse;
+import com.zucc.xwk_31401151.sharebookclient.api.presenter.impl.MessageListPresenterImpl;
+import com.zucc.xwk_31401151.sharebookclient.api.view.IMessageListView;
+import com.zucc.xwk_31401151.sharebookclient.bean.MessageListResponse;
+import com.zucc.xwk_31401151.sharebookclient.bean.MessageResponse;
+import com.zucc.xwk_31401151.sharebookclient.bean.UserBean;
 import com.zucc.xwk_31401151.sharebookclient.ui.adapter.MessageAdapter;
+import com.zucc.xwk_31401151.sharebookclient.utils.common.SaveUserUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,19 +23,19 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MessageListActivity extends BaseActivity  {
+public class MessageListActivity extends BaseActivity implements IMessageListView {
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
-    @BindView(R.id.swipe_refresh_widget)
-    SwipeRefreshLayout mSwipeRefreshLayout;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
 
     private GridLayoutManager mLayoutManager;
     private MessageAdapter messageAdapter;
     private List<MessageResponse> messageResponses;
+    private MessageListPresenterImpl messageListPresenter;
 
-    private MessageResponse messageResponse1;
-    private MessageResponse messageResponse2;
 
     private int spanCount = 1;
 
@@ -43,27 +49,26 @@ public class MessageListActivity extends BaseActivity  {
     }
 
     protected void initEvents() {
-        setTitle("站内信");
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_left_dark);
+        toolbar.setTitle("我的站内信");
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         spanCount = (int) getResources().getInteger(R.integer.home_span_count);
+        messageListPresenter = new MessageListPresenterImpl(this);
         messageResponses = new ArrayList<>();
 
-        //
-        messageResponse1 = new MessageResponse();
-        messageResponse2 = new MessageResponse();
 
-        messageResponse1.setStatus("1");
-        messageResponse2.setStatus("0");
-        messageResponse1.setCreate_time("2018-04-21");
-        messageResponse2.setCreate_time("2018-04-21");
-        messageResponse1.setBody("亲爱的用户，您好！\n  你所共享的书籍《百年孤独》被 亲爱的你 用户借阅，该用户的联系方式为13345678907。\n请在短时间内联系对方，以便方便借书。谢谢！");
-        messageResponse2.setBody("亲爱的用户，您好！\n  你所共享的书籍《百年孤独》被 亲爱的你 用户借阅，该用户的联系方式为13345678907。\n请在短时间内联系对方，以便方便借书。谢谢！");
+        //获取当前登录用户信息
+        UserBean userBean = new UserBean();
+        userBean = SaveUserUtil.getInstance().getUser(this);
+        String userid = userBean.getUser_id();
 
-        messageResponses.add(messageResponse1);
-        messageResponses.add(messageResponse2);
-        //
-
-        mSwipeRefreshLayout.setColorSchemeResources(R.color.recycler_color1, R.color.recycler_color2,
-                R.color.recycler_color3, R.color.recycler_color4);
 
         mLayoutManager = new GridLayoutManager(MessageListActivity.this, spanCount);
         mLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
@@ -76,10 +81,47 @@ public class MessageListActivity extends BaseActivity  {
         mRecyclerView.setLayoutManager(mLayoutManager);
 
 
-
         //设置adapter
-        messageAdapter = new MessageAdapter(this,messageResponses,spanCount);
+        messageAdapter = new MessageAdapter(this, messageResponses, spanCount);
         mRecyclerView.setAdapter(messageAdapter);
+        onRefresh(userid);
+    }
+
+    private void onRefresh(String userid) {
+
+        Log.i("读取用户信息2", userid);
+        messageListPresenter.loadMessages(userid);
+    }
+
+
+    @Override
+    public void showMessage(String msg) {
+//        Snackbar.make(mToolbar, msg, Snackbar.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
+    public void updateView(Object result) {
+
+        final MessageListResponse response = (MessageListResponse) result;
+        Log.i("MessageResponse", response.getTotal() + "");
+
+        System.out.println(response.getMessages());
+        messageResponses.clear();
+        Log.i("更新数据", "执行clear");
+        messageResponses.addAll(response.getMessages());
+        Log.i("更新数据", "执行add");
+        messageAdapter.notifyDataSetChanged();
+        Log.i("更新数据", "执行更新");
     }
 
 

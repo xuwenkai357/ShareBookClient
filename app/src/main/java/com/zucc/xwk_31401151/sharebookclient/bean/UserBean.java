@@ -1,48 +1,71 @@
 package com.zucc.xwk_31401151.sharebookclient.bean;
 
-import java.io.Serializable;
-
 /**
- * Author   :hymanme
- * Email    :hymanme@163.com
- * Create at 2016/2/23 0023
- * Description:
+ * Created by Administrator on 2018/4/8.
  */
-public class UserBean implements Serializable {
-    private String id;
-    private String name;
-    private String avatar;
-    private String large_avatar;
 
-    public String getId() {
-        return id;
+public class UserBean {
+
+        public String user;
+
+        public String token;
+
+        public String user_id;
+
+        public String user_name;
+
+        public String phone;
+
+    public String getUser() {
+        return user;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUser(String user) {
+        this.user = user;
     }
 
-    public String getName() {
-        return name;
+    public String getToken() {
+        return token;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setToken(String token) {
+        this.token = token;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void setUser_id(String user_id) {
+        this.user_id = user_id;
     }
 
-    public String getLarge_avatar() {
-        return large_avatar;
+    public String getUser_name() {
+        return user_name;
     }
 
-    public void setLarge_avatar(String large_avatar) {
-        this.large_avatar = large_avatar;
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    @Override
+    public String toString() {
+        return "UserBean{" +
+                "user='" + user + '\'' +
+                ", token='" + token + '\'' +
+                ", user_id='" + user_id + '\'' +
+                ", user_name='" + user_name + '\'' +
+                ", phone='" + phone + '\'' +
+                '}';
     }
 }
+
+

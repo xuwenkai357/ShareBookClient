@@ -15,7 +15,8 @@
         android:clipToPadding="false"
         android:overScrollMode="never"
         android:paddingBottom="16dp"
-        android:scrollbarStyle="outsideOverlay">
+        android:scrollbarStyle="outsideOverlay"
+        >
 
     </android.support.v7.widget.RecyclerView>
 </android.support.v4.widget.SwipeRefreshLayout>

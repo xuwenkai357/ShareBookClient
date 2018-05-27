@@ -4,6 +4,7 @@ import com.zucc.xwk_31401151.sharebookclient.AppConstant;
 import com.zucc.xwk_31401151.sharebookclient.api.ApiCompleteListener;
 import com.zucc.xwk_31401151.sharebookclient.api.common.ServiceFactory;
 import com.zucc.xwk_31401151.sharebookclient.api.common.service.IBookListService;
+import com.zucc.xwk_31401151.sharebookclient.api.common.service.ISelectBookListService;
 import com.zucc.xwk_31401151.sharebookclient.api.model.IBookListModel;
 import com.zucc.xwk_31401151.sharebookclient.bean.http.douban.BaseResponse;
 import com.zucc.xwk_31401151.sharebookclient.bean.http.douban.BookListResponse;
@@ -29,8 +30,8 @@ public class BookListModelImpl implements IBookListModel {
      */
     @Override
     public void loadBookList(String q, final String tag, int start, int count, String fields, final ApiCompleteListener listener) {
-        IBookListService iBookListService = ServiceFactory.createService(AppConstant.getDoubanUrl(), IBookListService.class);
-        iBookListService.getBookList(q, tag, start, count, fields)
+        IBookListService iBookListService = ServiceFactory.createService(AppConstant.getUrl(), IBookListService.class);
+        iBookListService.getBookList(q, start, count)
                 .subscribeOn(Schedulers.io())    //请求在io线程中执行
                 .observeOn(AndroidSchedulers.mainThread())//最后在主线程中执行
                 .subscribe(new Subscriber<Response<BookListResponse>>() {
@@ -59,6 +60,8 @@ public class BookListModelImpl implements IBookListModel {
                     }
                 });
     }
+
+
 
     @Override
     public void cancelLoading() {

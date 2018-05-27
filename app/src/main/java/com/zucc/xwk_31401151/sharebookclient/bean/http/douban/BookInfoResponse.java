@@ -17,12 +17,12 @@ import java.util.List;
 public class BookInfoResponse implements Serializable {
     public static final long serialVersionUID = 7060254125600464481L;
     public static final String serialVersionName = "bookInfo";
-    private String id;
+    private String book_info_id;
     private String title;
     private String subtitle;
     private String publisher;
     private BookRatingBean rating;
-    private String[] author;
+    private String author;
     private String[] translator;
     private String pubdate;
     private List<BookTagBean> tags;
@@ -48,12 +48,12 @@ public class BookInfoResponse implements Serializable {
         return serialVersionName;
     }
 
-    public String getId() {
-        return id;
+    public String getBook_info_id() {
+        return book_info_id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setBook_info_id(String book_info_id) {
+        this.book_info_id = book_info_id;
     }
 
     public String getTitle() {
@@ -88,11 +88,11 @@ public class BookInfoResponse implements Serializable {
         this.rating = rating;
     }
 
-    public String[] getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(String[] author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 
@@ -216,17 +216,17 @@ public class BookInfoResponse implements Serializable {
         this.series = series;
     }
 
-    public String getUrl() {
+    public String getAlt() {
         return alt;
     }
 
-    public void setUrl(String url) {
-        this.alt = url;
+    public void setAlt(String alt) {
+        this.alt = alt;
     }
 
     public String getInfoString() {
-        if (this.author.length > 0) {
-            return this.author[0].split("、")[0] + "/" + this.publisher + "/" + this.pubdate;
+        if (this.author !=null) {
+            return this.author.split("、")[0] + "/" + this.publisher + "/" + this.pubdate;
         }
         return "-";
     }

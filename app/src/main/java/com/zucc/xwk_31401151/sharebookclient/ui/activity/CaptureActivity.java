@@ -183,13 +183,8 @@ public class CaptureActivity extends BaseActivity implements Callback {
 //		viewfinderView.drawResultBitmap(barcode);
         //播放声音并震动手机一下
         playBeepSoundAndVibrate();
-        //跳转到书目页面 do something
-//        txtResult.setText(obj.getBarcodeFormat().toString() + ":"
-//                + obj.getText());
+
         if (obj.getText().startsWith("http")) {
-//            Intent intent = new Intent(UIUtils.getContext(), WebViewActivity.class);
-//            intent.putExtra("url", obj.getText());
-//            UIUtils.startActivity(intent);
             CustomTabActivityHelper.openCustomTab(
                     this,
                     new CustomTabsIntent.Builder()
@@ -201,6 +196,7 @@ public class CaptureActivity extends BaseActivity implements Callback {
         } else {
             Intent intent = new Intent(CaptureActivity.this, SearchResultActivity.class);
             intent.putExtra("q", obj.getText());
+            intent.putExtra("enter","capture");
             startActivity(intent);
         }
         this.finish();

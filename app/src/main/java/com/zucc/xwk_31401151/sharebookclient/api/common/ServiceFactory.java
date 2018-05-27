@@ -40,8 +40,8 @@ public class ServiceFactory {
                     Cache cache = new Cache(cacheFile, DEFAULT_CACHE_SIZE);
                     okHttpClient = new OkHttpClient.Builder()
                             .cache(cache)
-                            .addInterceptor(REQUEST_INTERCEPTOR)
-                            .addNetworkInterceptor(RESPONSE_INTERCEPTOR)
+//                            .addInterceptor(REQUEST_INTERCEPTOR)
+//                            .addNetworkInterceptor(RESPONSE_INTERCEPTOR)
                             .addInterceptor(LoggingInterceptor)
                             .build();
                 }

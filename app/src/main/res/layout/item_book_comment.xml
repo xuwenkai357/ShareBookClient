@@ -45,20 +45,7 @@
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
-            <android.support.v7.widget.AppCompatRatingBar
-                android:id="@+id/ratingBar_hots"
-                style="?android:attr/ratingBarStyleSmall"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/tv_user_name"
-                android:layout_marginBottom="0.5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_toRightOf="@+id/tv_user_name"
-                android:isIndicator="true"
-                android:max="10"
-                android:numStars="5"
-                android:progressDrawable="@drawable/rating_bar_bg"
-                android:rating="0" />
+
 
             <TextView
                 android:id="@+id/tv_comment_content"
@@ -70,12 +57,12 @@
                 android:textColor="?android:attr/textColorPrimary"
                 android:textSize="14sp" />
 
-            <ImageView
-                android:id="@+id/iv_favorite"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tv_comment_content"
-                android:src="@drawable/ic_like" />
+            <!--<ImageView-->
+                <!--android:id="@+id/iv_favorite"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/tv_comment_content"-->
+                <!--android:src="@drawable/ic_like" />-->
 
             <TextView
                 android:id="@+id/tv_favorite_num"

@@ -6,9 +6,10 @@
     android:layout_height="match_parent"
     tools:context="com.zucc.xwk_31401151.sharebookclient.ui.activity.StartActivity">
 
-    <TextView
+    <ImageView
+        android:adjustViewBounds="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/app_name"
-        android:gravity="center"/>
+        android:src="@mipmap/start_backgroud"/>
+
 </RelativeLayout>
